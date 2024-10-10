@@ -19,13 +19,17 @@ class _EditScreenState extends State<EditScreen> {
   final formKey = GlobalKey<FormState>();
    final  pName = TextEditingController();
    final  fName = TextEditingController();
+   final  pDate = TextEditingController();
    final  userAmount = TextEditingController();
-   final  date = TextEditingController(); 
+
 
   @override
   Widget build(BuildContext context) {
-    titleController.text = widget.statement.title;
-    amountController.text = widget.statement.amount.toString();
+    pName.text = widget.statement.pName;
+    fName.text = widget.statement.fName;
+    pDate.text = widget.statement.pDate;
+    pName.text = widget.statement.pName;
+    userAmount.text = widget.statement.userAmount.toString();
     return Scaffold(
         appBar: AppBar(
           title: const Text('แบบฟอร์มแก้ไขข้อมูล'),
@@ -39,7 +43,7 @@ class _EditScreenState extends State<EditScreen> {
                     labelText: 'ชื่อรายการ',
                   ),
                   autofocus: false,
-                  controller: titleController,
+                  controller: pName,
                   validator: (String? str) {
                     if (str!.isEmpty) {
                       return 'กรุณากรอกข้อมูล';
@@ -51,7 +55,7 @@ class _EditScreenState extends State<EditScreen> {
                     labelText: 'จำนวนเงิน',
                   ),
                   keyboardType: TextInputType.number,
-                  controller: amountController,
+                  controller: userAmount,
                   validator: (String? input) {
                     try {
                       double amount = double.parse(input!);
@@ -71,8 +75,10 @@ class _EditScreenState extends State<EditScreen> {
                               // create transaction data object
                               var statement = Transactions(
                                   keyID: widget.statement.keyID,
-                                  title: titleController.text,
-                                  amount: double.parse(amountController.text),
+                                  pName: pName.text,
+                                  fName: fName.text,
+                                  pDate: pDate.text,
+                                  userAmount: int.parse(userAmount.text),
                                   date: DateTime.now()
                                   );
                             
