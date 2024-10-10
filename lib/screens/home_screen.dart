@@ -45,8 +45,20 @@ class _HomeScreenState extends State<HomeScreen> {
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
                     child: ListTile(
                       title: Text(statement.pName),
-                      subtitle: Text(DateFormat('dd MMM yyyy hh:mm:ss')
-                          .format(statement.date)),
+                      subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('ชื่อ Platform: ${statement.pName}' , style: TextStyle(fontSize: 16)),
+                        Text('ชื่อผู้ก่อตั้ง: ${statement.fName}', style: TextStyle(fontSize: 16)),
+                        Text('วันที่เปิดให้บริการ: ${statement.pDate}', style: TextStyle(fontSize: 16)),
+                        Text('จำนวนผู้ใช้งาน: ${statement.userAmount}', style: TextStyle(fontSize: 16)),
+                  
+                        Text(
+                          DateFormat('dd MMM yyyy hh:mm:ss').format(statement.date),
+                          style: TextStyle(fontSize: 14, color: Colors.grey),
+                        ),
+                      ],
+                    ),
                       leading: CircleAvatar(
                         radius: 30,
                         child: FittedBox(
