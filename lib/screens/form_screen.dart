@@ -17,10 +17,11 @@ class FormScreen extends StatefulWidget {
 class _FormScreenState extends State<FormScreen> {
   final formKey = GlobalKey<FormState>();
 
-  final titleController = TextEditingController();
-
-  final amountController = TextEditingController();
-
+   final  pName = TextEditingController();
+   final  fName = TextEditingController();
+   final  userAmount = TextEditingController();
+   final  date = TextEditingController();
+ 
   @override
   Widget build(BuildContext context) {
   
@@ -34,10 +35,10 @@ class _FormScreenState extends State<FormScreen> {
               children: [
                 TextFormField(
                   decoration: const InputDecoration(
-                    labelText: 'ชื่อรายการ',
+                    labelText: 'ชื่อ Platform',
                   ),
                   autofocus: false,
-                  controller: titleController,
+                  controller: pName,
                   validator: (String? str) {
                     if (str!.isEmpty) {
                       return 'กรุณากรอกข้อมูล';
@@ -46,10 +47,10 @@ class _FormScreenState extends State<FormScreen> {
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
-                    labelText: 'จำนวนเงิน',
+                    labelText: 'จำนวนผู้ใช้งาน',
                   ),
                   keyboardType: TextInputType.number,
-                  controller: amountController,
+                  controller: userAmount,
                   validator: (String? input) {
                     try {
                       double amount = double.parse(input!);
@@ -69,8 +70,8 @@ class _FormScreenState extends State<FormScreen> {
                               // create transaction data object
                               var statement = Transactions(
                                   keyID: null,
-                                  title: titleController.text,
-                                  amount: double.parse(amountController.text),
+                                  pName: pName.text,
+                                  userAmount: int.parse(userAmount.text),
                                   date: DateTime.now()
                                   );
                             
