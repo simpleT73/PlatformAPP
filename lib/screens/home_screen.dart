@@ -1,7 +1,5 @@
 import 'package:account/provider/transaction_provider.dart';
 import 'package:account/screens/edit_screen.dart';
-import 'package:account/screens/edit_screen.dart.bak';
-import 'package:account/screens/form_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
@@ -52,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       leading: CircleAvatar(
                         radius: 30,
                         child: FittedBox(
-                          child: Text('${statement.userAmount}'),
+                          child: Text('${statement.pName[0].toUpperCase()}'),
                         ),
                       ),
                       trailing: IconButton(

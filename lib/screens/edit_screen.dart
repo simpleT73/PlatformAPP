@@ -58,7 +58,7 @@ class _EditScreenState extends State<EditScreen> {
                   controller: fName,
                   validator: (String? str) {
                     if (str!.isEmpty) {
-                      return 'กรุณากรอกชื่อผู้ด่อตั้ง';
+                      return 'กรุณากรอกชื่อผู้ก่อตั้ง';
                     }
                   },
                 ),

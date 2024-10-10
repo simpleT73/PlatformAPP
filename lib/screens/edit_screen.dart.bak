@@ -1,36 +1,35 @@
 import 'package:account/main.dart';
 import 'package:account/models/transactions.dart';
 import 'package:account/provider/transaction_provider.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sembast/sembast.dart'; 
 
-class FormEditScreen extends StatefulWidget {
-  Transactions data;
-  FormEditScreen({super.key, required this.data});
+class EditScreen extends StatefulWidget {
+
+  Transactions statement;
+
+  EditScreen({super.key, required this.statement});
 
   @override
-  State<FormEditScreen> createState() => _FormEditScreenState();
+  State<EditScreen> createState() => _EditScreenState();
 }
 
-class _FormEditScreenState extends State<FormEditScreen> {
-  final formKey = GlobalKey<FormState>();
+class _EditScreenState extends State<EditScreen> {
+   final formKey = GlobalKey<FormState>();
 
-  final titleController = TextEditingController();
+   final  pName = TextEditingController();
+   final  fName = TextEditingController();
+   final  pDate = TextEditingController();
+   final  userAmount = TextEditingController();
 
-  final amountController = TextEditingController();
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    titleController.text = widget.data.title;
-    amountController.text = widget.data.amount.toString();
-  }
   @override
   Widget build(BuildContext context) {
-    
-    
+    pName.text = widget.statement.pName;
+    fName.text = widget.statement.fName;
+    pDate.text = widget.statement.pDate;
+    userAmount.text = widget.statement.userAmount.toString();
     return Scaffold(
         appBar: AppBar(
           title: const Text('แบบฟอร์มแก้ไขข้อมูล'),
@@ -41,22 +40,46 @@ class _FormEditScreenState extends State<FormEditScreen> {
               children: [
                 TextFormField(
                   decoration: const InputDecoration(
-                    labelText: 'ชื่อรายการ',
+                    labelText: 'ชื่อ Platform',
                   ),
                   autofocus: false,
-                  controller: titleController,
+                  controller: pName,
                   validator: (String? str) {
                     if (str!.isEmpty) {
-                      return 'กรุณากรอกข้อมูล';
+                      return 'กรุณากรอกชื่อ Platform';
                     }
                   },
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
-                    labelText: 'จำนวนเงิน',
+                    labelText: 'ชื่อผู้ก่อตั้ง',
+                  ),
+                  autofocus: false,
+                  controller: fName,
+                  validator: (String? str) {
+                    if (str!.isEmpty) {
+                      return 'กรุณากรอกชื่อผู้ด่อตั้ง';
+                    }
+                  },
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: 'วันที่เปิดให้เริ่มใช้งาน',
+                  ),
+                  autofocus: false,
+                  controller: pDate,
+                  validator: (String? str) {
+                    if (str!.isEmpty) {
+                      return 'DD/MM/YYYY';
+                    }
+                  },
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: 'จำนวนผู้ใช้งาน',
                   ),
                   keyboardType: TextInputType.number,
-                  controller: amountController,
+                  controller: userAmount,
                   validator: (String? input) {
                     try {
                       double amount = double.parse(input!);
@@ -69,15 +92,17 @@ class _FormEditScreenState extends State<FormEditScreen> {
                   },
                 ),
                 TextButton(
-                    child: const Text('บันทึก'),
+                    child: const Text('แก้ไขข้อมูล'),
                     onPressed: () {
                           if (formKey.currentState!.validate())
                             {
                               // create transaction data object
                               var statement = Transactions(
-                                  keyID: widget.data.keyID,
-                                  title: titleController.text,
-                                  amount: double.parse(amountController.text),
+                                  keyID: widget.statement.keyID,
+                                  pName: pName.text,
+                                  fName: fName.text,
+                                  pDate: pDate.text,
+                                  userAmount: int.parse(userAmount.text),
                                   date: DateTime.now()
                                   );
                             
