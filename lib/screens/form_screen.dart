@@ -19,6 +19,7 @@ class _FormScreenState extends State<FormScreen> {
 
    final  pName = TextEditingController();
    final  fName = TextEditingController();
+   final  pDate = TextEditingController();
    final  userAmount = TextEditingController();
    final  date = TextEditingController();
  
@@ -41,7 +42,7 @@ class _FormScreenState extends State<FormScreen> {
                   controller: pName,
                   validator: (String? str) {
                     if (str!.isEmpty) {
-                      return 'กรุณากรอกข้อมูล';
+                      return 'กรุณากรอกชื่อ Platform';
                     }
                   },
                 ),
@@ -53,7 +54,7 @@ class _FormScreenState extends State<FormScreen> {
                   controller: fName,
                   validator: (String? str) {
                     if (str!.isEmpty) {
-                      return 'กรุณากรอกข้อมูล';
+                      return 'กรุณากรอกชื่อผู้ด่อตั้ง';
                     }
                   },
                 ),
@@ -84,6 +85,7 @@ class _FormScreenState extends State<FormScreen> {
                                   keyID: null,
                                   pName: pName.text,
                                   fName: fName.text,
+                                  pDate: pDate.text,
                                   userAmount: int.parse(userAmount.text),
                                   date: DateTime.now()
                                   );

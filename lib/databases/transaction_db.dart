@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sembast/sembast.dart';
@@ -27,6 +28,7 @@ class TransactionDB{
     var keyID  = store.add(db, {
       "pName": statement.pName,
       "fName": statement.fName,
+      "pDate" : statement.pDate,
       "userAmount": statement.userAmount,
       "date": statement.date.toIso8601String()
     });
@@ -44,6 +46,7 @@ class TransactionDB{
         keyID: record.key,
         pName: record['pName'].toString(),
         fName: record['fName'].toString(),
+        pDate: record['pDate'].toString(),
         userAmount: int.parse(record['userAmount'].toString()),
         date: DateTime.parse(record['date'].toString())
       ));
@@ -66,6 +69,7 @@ class TransactionDB{
     var result = store.update(db, finder: filter,  {
       "pName": statement.pName,
       "fName": statement.fName,
+      "pDate": statement.pDate,
       "userAmount": statement.userAmount,
       "date": statement.date.toIso8601String()
     });
