@@ -66,7 +66,7 @@ class _FormScreenState extends State<FormScreen> {
                   controller: pDate,
                   validator: (String? str) {
                     if (str!.isEmpty) {
-                      return 'กรุณากรอกวันที่เปิดให้เริ่มใช้งาน';
+                      return 'DD/MM/YYYY';
                     }
                   },
                 ),
