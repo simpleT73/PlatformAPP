@@ -60,6 +60,18 @@ class _FormScreenState extends State<FormScreen> {
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
+                    labelText: 'วันที่เปิดให้เริ่มใช้งาน',
+                  ),
+                  autofocus: false,
+                  controller: pDate,
+                  validator: (String? str) {
+                    if (str!.isEmpty) {
+                      return 'กรุณากรอกวันที่เปิดให้เริ่มใช้งาน';
+                    }
+                  },
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
                     labelText: 'จำนวนผู้ใช้งาน',
                   ),
                   keyboardType: TextInputType.number,
