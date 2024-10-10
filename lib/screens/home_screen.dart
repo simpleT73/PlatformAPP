@@ -46,13 +46,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     margin:
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
                     child: ListTile(
-                      title: Text(statement.title),
+                      title: Text(statement.pName),
                       subtitle: Text(DateFormat('dd MMM yyyy hh:mm:ss')
                           .format(statement.date)),
                       leading: CircleAvatar(
                         radius: 30,
                         child: FittedBox(
-                          child: Text('${statement.amount}'),
+                          child: Text('${statement.userAmount}'),
                         ),
                       ),
                       trailing: IconButton(

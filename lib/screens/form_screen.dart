@@ -47,6 +47,18 @@ class _FormScreenState extends State<FormScreen> {
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
+                    labelText: 'ชื่อผู้ก่อตั้ง',
+                  ),
+                  autofocus: false,
+                  controller: fName,
+                  validator: (String? str) {
+                    if (str!.isEmpty) {
+                      return 'กรุณากรอกข้อมูล';
+                    }
+                  },
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
                     labelText: 'จำนวนผู้ใช้งาน',
                   ),
                   keyboardType: TextInputType.number,
@@ -71,6 +83,7 @@ class _FormScreenState extends State<FormScreen> {
                               var statement = Transactions(
                                   keyID: null,
                                   pName: pName.text,
+                                  fName: fName.text,
                                   userAmount: int.parse(userAmount.text),
                                   date: DateTime.now()
                                   );

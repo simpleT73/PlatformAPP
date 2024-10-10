@@ -17,10 +17,10 @@ class EditScreen extends StatefulWidget {
 
 class _EditScreenState extends State<EditScreen> {
   final formKey = GlobalKey<FormState>();
-
-  final titleController = TextEditingController();
-
-  final amountController = TextEditingController();
+   final  pName = TextEditingController();
+   final  fName = TextEditingController();
+   final  userAmount = TextEditingController();
+   final  date = TextEditingController(); 
 
   @override
   Widget build(BuildContext context) {
